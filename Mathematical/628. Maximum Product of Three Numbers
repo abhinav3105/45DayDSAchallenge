@@ -1,0 +1,14 @@
+class Solution {
+    public int maximumProduct(int[] nums) {
+        int max = Integer.MIN_VALUE;
+        int n = nums.length-1;
+        if(nums.length < 3){
+            return -1;
+        }
+       Arrays.sort(nums);
+       int prod = nums[n]*nums[n-1]*nums[n-2];
+       int prod2 = nums[0]*nums[1]*nums[n];
+       int ans = Math.max(prod,prod2);
+       return ans;
+    }
+}
