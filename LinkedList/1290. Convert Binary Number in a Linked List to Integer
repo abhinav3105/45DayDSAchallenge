@@ -1,0 +1,24 @@
+class Solution {
+    public int getDecimalValue(ListNode head) {
+        int i = 0;
+        int ans = 0;
+        ListNode prev = null;
+        ListNode curr = head ;
+        ListNode next;
+        while(curr != null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        head = prev;
+        ListNode temp = head;
+        while(temp!=null){
+            ans = ans + temp.val*(int)Math.pow(2, i);
+            i++;
+            temp = temp.next;
+        }
+        return ans;
+    }
+    
+}
