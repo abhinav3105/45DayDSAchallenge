@@ -1,0 +1,23 @@
+class Solution {
+    public ListNode partition(ListNode head, int x) {
+        ListNode smallHead = new ListNode(0);
+        ListNode greaterHead = new ListNode(0) ;
+        ListNode small = smallHead;
+        ListNode greater  = greaterHead;
+
+        while(head != null){
+            if(head.val < x){
+                small.next = head;
+                small = head;
+            }
+            else{
+                greater.next = head;
+                greater = head;
+            }
+            head = head.next;
+        }
+        greater.next = null;
+        small.next = greaterHead.next;
+        return smallHead.next;
+    }
+}
