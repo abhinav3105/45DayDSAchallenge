@@ -1,0 +1,23 @@
+class Solution {
+    public boolean canJump(int[] nums) {
+        if(nums.length == 1 && nums[0] == 0) return true;
+        int x =0;
+        boolean cnt = true;
+        for(int i = nums.length-2 ; i>= 0;i--){
+            if(nums[i] == 0) {
+                cnt = false;
+                x = i;
+                for(int j = i-1;j>= 0;j--){
+                    if(!cnt){
+                        if(nums[j] >x-j){
+                            cnt = true;
+                        }
+                    }
+                }
+                if(!cnt) return false; 
+            }
+        }
+
+        return cnt;
+    }
+}
