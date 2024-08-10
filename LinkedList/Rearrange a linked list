@@ -1,0 +1,33 @@
+class Solution {
+
+    // Should rearrange given linked list such that all even
+    // positioned Nodes are before odd positioned.
+    // Returns nothing
+    void rearrangeEvenOdd(Node head) {
+        //  The task is to complete this me
+        Node oddHead = new Node(0);
+        Node evenHead = new Node(0);
+        Node odd = oddHead;
+        Node even = evenHead;
+        Node curr = head;
+        int c = 1;
+        while(curr!=null){
+            if(c%2 != 0){
+                odd.next = curr;
+                odd = curr;
+            }
+            else{
+                even.next = curr;
+                even = curr;
+            }
+            curr = curr.next;
+            c++;
+        }
+        even.next = null;
+        odd.next = evenHead.next;
+        
+        head = oddHead.next;
+        
+        
+    }
+}
