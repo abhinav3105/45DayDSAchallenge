@@ -1,0 +1,20 @@
+class Solution {
+    public boolean isPossible(int k, int[] arr1, int[] arr2) {
+        // Your code goes here.
+        Arrays.sort(arr1);
+        Arrays.sort(arr2);
+        int s = 0;
+        int e = arr2.length-1;
+        while(s<=e){
+            int temp = arr2[s];
+            arr2[s] = arr2[e];
+            arr2[e] = temp;
+            s++;
+            e--;
+        }
+        for(int i = 0;i<Math.min(arr1.length,arr2.length);i++){
+            if(arr1[i] + arr2[i] < k) return false;
+        }
+        return true;
+    }
+}
