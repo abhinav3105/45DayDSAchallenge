@@ -1,0 +1,35 @@
+class Solution
+{
+    Node rev(Node head){
+        Node prev = null;
+        Node curr = head;
+        Node next;
+        while(curr!=null){
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+        return prev;
+    }
+    Node compute(Node head)
+    {
+        // your code here
+        head = rev(head);
+        int maxVal = head.data;
+        Node curr = head.next, prev= head;
+        while(curr !=null ){
+            if(curr.data >=maxVal){
+                prev=curr;
+                maxVal = curr.data;
+            }
+            // curr.data < maxVal
+            else{
+                prev.next = curr.next;
+            }
+            curr =curr.next;
+        }
+        return rev(head);
+    }
+}
+  
